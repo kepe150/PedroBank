@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block style%}
+<style>
+    h1, h2, p {
+        color: beige;
+    }
+    fieldset {
+        border: none;
+    }
+
+    button {
+        background-color: green;
+        border: none;
+        border-radius: 10px;
+        width: 120px;
+        height: 50px;
+        font-size: large;
+    }
+
+    #porcentage {
+        width: 200px;
+        height: 50px;
+        border: none;
+        background-color: green;
+        color: white;
+        font: large;
+    }
+
+    fieldset {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .option {
+        flex: 1;
+        padding: 10px;
+        color: azure;
+    }
+
+    a {
+        color: greenyellow;
+        text-decoration: none;
+        font-size: x-large;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+    <label for="porcentage"><h2>Porcentagem</h2></label>
+    <input type="number" name="value" id="porcentage">
+    <fieldset>
+        <label class="option"><input type="radio" name="porcentageType" value="dizimo">Dízimo</label>
+        <label class="option"><input type="radio" name="porcentageType" value="hold">Guardar</label>
+        <label class="option"><input type="radio" name="porcentageType" value="investment">Investimento</label>
+    </fieldset>
+    <button type="submit">Enviar</button>
+</form>
+<h2>Configurações atuais:</h2>
+<p>Dizimo: {{ values['dizimo'] }}</p>
+<p>Guardar: {{ values['hold'] }}</p>
+<p>Investimento: {{ values['investment'] }}</p>
+{% if chaged %}
+<script>
+    alert('Configurações alteradas com sucesso!');
+</script>
+{% endif %}
+
+<a href="/">Menu principal</a>
+{% endblock %}
